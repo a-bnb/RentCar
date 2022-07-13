@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>car_add</class>
+ <widget class="QDialog" name="car_add">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="update_btn">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>340</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>관광지 정보 등록</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="price_text">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>240</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="type_box">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>150</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>휘발유</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>경유</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>LPG</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>전기</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>210</y>
+     <width>111</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>대여가</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="check_btn">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>60</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>이름 중복확인</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>120</y>
+     <width>81</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>기름 종류</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="name_text">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>60</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>30</y>
+     <width>81</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>차량 모델명</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit_btn">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>340</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>뒤로가기</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>210</y>
+     <width>111</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>보유개수</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="stock_text">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>240</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

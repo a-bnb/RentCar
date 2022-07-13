@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>reserv_add</class>
+ <widget class="QDialog" name="reserv_add">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLineEdit" name="ID_text">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>40</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="return_text">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>250</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="refresh_btn">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>370</y>
+     <width>31</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="img.qrc">
+     <normaloff>:/new/prefix1/img/refresh.png</normaloff>:/new/prefix1/img/refresh.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>220</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>반납일</string>
+   </property>
+  </widget>
+  <widget class="QCalendarWidget" name="calendar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>471</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="horizontalHeaderFormat">
+    <enum>QCalendarWidget::LongDayNames</enum>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="rent_text">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>180</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_btn">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>370</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>예약추가</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="Car_table">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>190</y>
+     <width>161</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>차종</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLineEdit" name="model_text">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>110</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>80</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>차종</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>150</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>대여일</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>10</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>고객 ID</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="price_text">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>320</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>290</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>총액</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="user_table">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>190</y>
+     <width>151</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <attribute name="horizontalHeaderStretchLastSection">
+    <bool>true</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="exit_btn">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>370</y>
+     <width>31</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="img.qrc">
+     <normaloff>:/new/prefix1/img/undo.png</normaloff>:/new/prefix1/img/undo.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>25</width>
+     <height>25</height>
+    </size>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="img.qrc"/>
+ </resources>
+ <connections/>
+</ui>

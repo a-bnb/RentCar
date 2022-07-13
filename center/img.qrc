@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>img/beach.png</file>
+        <file>img/bonobono.jpg</file>
+        <file>img/checked_calendar.png</file>
+        <file>img/delete.png</file>
+        <file>img/deleted_user.png</file>
+        <file>img/edit.png</file>
+        <file>img/plus.png</file>
+        <file>img/refresh.png</file>
+        <file>img/undo.png</file>
+        <file>img/user.png</file>
+        <file>img/user_add.png</file>
+        <file>img/user_remove.png</file>
+    </qresource>
+</RCC>
