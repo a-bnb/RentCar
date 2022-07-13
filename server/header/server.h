@@ -8,12 +8,11 @@
 #include <sys/socket.h>
 #include <sys/epoll.h>
 #include <string.h>
-#include "event.h"
 #include "recv.h"
 #include "udata.h"
 
 
-class Server : public Event, public Recv
+class Server : public Recv
 {
     public:
         Server(int port_num) : port(port_num) 

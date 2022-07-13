@@ -9,27 +9,42 @@ void Recv::Recv_main(udata* userdata, string msg)
 {
     clnt_msg = msg;
     user_data = userdata;
-    if(clnt_msg.find("login") == 0)
+    if(clnt_msg.find("update") == 0)
     {
-        login();
-    }
-    else if(clnt_msg.find("idcheck") == 0)
-    {
-        id_check();
-    }
-    else if(clnt_msg.find("signup") == 0)
-    {
-        sign_up();
-    }    
-    else if(clnt_msg.find("choose_date") == 0)
-    {
-        choose_date();
-    }
-    else if(clnt_msg.find("update") == 0)
-    {        
         update();
     }
+    else if(clnt_msg.find("showclnt") == 0)
+    {
+        client_wait();
+    }
+    
 }
+
+void Recv::update()
+{
+    cout<<clnt_msg<<endl;
+    vector<string> check_msg = Recv::split(clnt_msg, '/');
+    strcpy(user_data->name, check_msg[2].c_str());
+    if(check_msg[1] == "center")
+        user_data->type=1;
+    else
+    {
+        user_data->type=0;
+        wait_list.push_back(*user_data);
+    }
+        
+    
+}
+
+void Recv::client_wait()
+{
+    for(udata client : wait_list)
+    {
+
+    }
+}
+
+
 
 vector<string> Recv::split(string str, char Delimiter) {
     istringstream iss(str);             // istringstream에 str을 담는다.

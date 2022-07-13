@@ -8,6 +8,8 @@ using namespace std;
 typedef struct
 {
     int fd;
+    int type;
+    int chat_fd;
     char name[30];
 }udata;
 

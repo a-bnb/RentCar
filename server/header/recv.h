@@ -9,24 +9,23 @@
 #include "udata.h"
 #include "size.h"
 #include "database.h"
+#include "event.h"
 
 using namespace std;
 
-class Recv
+class Recv : public Event
 {
     public:
         Recv(){}
         ~Recv() {}
         void Recv_main(udata *userdata, string clnt_msg);
         vector<string> split(string str, char Delimiter);
-        void login();
-        void id_check();
-        void sign_up();        
-        void choose_date();
         void update();
+        void client_wait();
 
     private:
         char query[SIZE_CONST::BUF_SIZE];
+        vector<udata> wait_list;
         udata* user_data;
         string clnt_msg;
 
