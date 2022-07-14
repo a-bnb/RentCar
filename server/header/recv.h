@@ -22,6 +22,10 @@ class Recv : public Event
         vector<string> split(string str, char Delimiter);
         void update();
         void client_wait();
+        void connect_client();
+        void connect_server();
+        void send_msg();
+        void chat_end();
 
     private:
         char query[SIZE_CONST::BUF_SIZE];

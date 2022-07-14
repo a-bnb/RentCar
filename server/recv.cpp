@@ -17,6 +17,22 @@ void Recv::Recv_main(udata* userdata, string msg)
     {
         client_wait();
     }
+    else if(clnt_msg.find("con_clnt") == 0)
+    {
+        connect_client();
+    }
+    else if(clnt_msg.find("con_serv") == 0)
+    {
+        connect_server();
+    }
+    else if(clnt_msg.find("send_msg") == 0)
+    {
+        send_msg();
+    }
+    else if(clnt_msg.find("chat_end") == 0)
+    {
+        chat_end();
+    }
     
 }
 
@@ -24,7 +40,7 @@ void Recv::update()
 {
     cout<<clnt_msg<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
-    strcpy(user_data->name, check_msg[2].c_str());
+    user_data->name = check_msg[2];
     if(check_msg[1] == "center")
         user_data->type=1;
     else
@@ -40,11 +56,52 @@ void Recv::client_wait()
 {
     for(udata client : wait_list)
     {
+        if(client.name != "")
+            write(user_data->fd, client.name.c_str(), sizeof(client.name));
+    }
+    write(user_data->fd, "show_end", sizeof("show_end"));
+}
 
+void Recv::connect_client()
+{
+    cout<<clnt_msg<<endl;
+    vector<string> check_msg = Recv::split(clnt_msg, '/');
+    string msg;
+    udata empty;
+    empty.name = "";
+    msg = "connected/" + user_data->fd;
+    for(udata &client : wait_list)
+    {
+        if(client.name == check_msg[1])
+        {
+            write(client.fd, msg.c_str(), sizeof(msg));
+            user_data->chat_fd = client.fd;
+            client = empty;
+        }
     }
 }
 
+void Recv::connect_server()
+{
+    cout<<clnt_msg<<endl;
+    vector<string> check_msg = Recv::split(clnt_msg, '/');
+    user_data->chat_fd = std::stoi(check_msg[1]);
+}
 
+void Recv::send_msg()
+{
+    cout<<clnt_msg<<endl;
+    vector<string> check_msg = Recv::split(clnt_msg, '/');
+    string msg;
+    msg = "[" + user_data->name + "] " + check_msg[1];    
+    write(user_data->chat_fd, msg.c_str(), sizeof(msg));
+}
+
+void Recv::chat_end()
+{
+    write(user_data->chat_fd, "chat_end", sizeof("chat_end"));
+    user_data->chat_fd = 0;
+}
 
 vector<string> Recv::split(string str, char Delimiter) {
     istringstream iss(str);             // istringstream에 str을 담는다.

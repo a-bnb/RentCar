@@ -10,7 +10,7 @@ typedef struct
     int fd;
     int type;
     int chat_fd;
-    char name[30];
+    string name;
 }udata;
 
 #endif
