@@ -40,66 +40,74 @@ void Recv::update()
 {
     cout<<clnt_msg<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
+    user_data->name = check_msg[2];
     if(check_msg[1] == "center")
         user_data->type=1;
-    else
+    else if(check_msg[1] == "client")
     {
         user_data->type=0;
         wait_list.push_back(*user_data);
     }
-    user_data->name = check_msg[2];
-   
-    
+    cout<<user_data->name<<": "<<user_data->fd<<endl;
 }
 
 void Recv::show_wait()
 {
+    string msg = "list";
     for(udata client : wait_list)
     {
         if(client.name != "")
-            write(user_data->fd, client.name.c_str(), sizeof(client.name));
+            msg += "/"+client.name;
     }
-    write(user_data->fd, "show_end", sizeof("show_end"));
+    msg += "/show_end";
+    write(user_data->fd, msg.c_str(), sizeof(msg));
+
 }
 
 void Recv::connect_client()
 {
-    cout<<clnt_msg<<endl;
+    cout<<"\nconnect_client()"<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
-    string msg;
+    string msg = "con_serv/";
     udata empty;
     empty.name = "";
-    msg = "connected/" + user_data->fd;
     for(udata &client : wait_list)
     {
         if(client.name == check_msg[1])
         {
+            msg += to_string(user_data->fd);
+            cout<<"msg: "<<msg<<endl;
             write(client.fd, msg.c_str(), sizeof(msg));
             user_data->chat_fd = client.fd;
             client = empty;
+            break;
         }
     }
 }
 
 void Recv::connect_server()
 {
-    cout<<clnt_msg<<endl;
+    cout<<"\nconnect_server()"<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
-    user_data->chat_fd = std::stoi(check_msg[1]);
+    user_data->chat_fd = stoi(check_msg[1]);
+    cout<<"client chat_fd: "<<user_data->chat_fd<<endl;
 }
 
 void Recv::send_msg()
 {
-    cout<<clnt_msg<<endl;
+    cout<<"\nsend_msg()"<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
+    char buf[1024];
     string msg;
+    cout<<user_data->name<<".chat_fd: "<<user_data->chat_fd<<endl;
     msg = "[" + user_data->name + "] " + check_msg[1];    
-    write(user_data->chat_fd, msg.c_str(), sizeof(msg));
+    strcpy(buf,msg.c_str());
+    write(user_data->chat_fd, buf, sizeof(buf));
 }
 
 void Recv::chat_end()
 {
-    write(user_data->chat_fd, "chat_end", sizeof("chat_end"));
+    write(user_data->chat_fd, "chat_end2", sizeof("chat_end2"));
     user_data->chat_fd = 0;
 }
 

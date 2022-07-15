@@ -3,6 +3,7 @@
 #include "user.h"
 #include "tour.h"
 #include "car.h"
+#include "client_select.h"
 
 mainwindow::mainwindow(Database db, QWidget *parent)
     : QDialog(parent)
@@ -43,5 +44,7 @@ void mainwindow::on_tour_btn_clicked()
 
 void mainwindow::on_chat_btn_clicked()
 {
-
+    client_select window(db);
+    window.setModal(true);
+    window.exec();
 }

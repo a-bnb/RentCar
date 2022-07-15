@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QString>
 #include <QListWidget>
+#include <vector>
+#include <sstream>
 #include "database.h"
 #include "tcp.h"
 

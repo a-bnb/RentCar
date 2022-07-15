@@ -12,5 +12,6 @@
         <file>img/user.png</file>
         <file>img/user_add.png</file>
         <file>img/user_remove.png</file>
+        <file>img/payments.png</file>
     </qresource>
 </RCC>

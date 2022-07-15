@@ -32,6 +32,8 @@ private slots:
 
     void on_table_itemClicked();
 
+    void on_sell_btn_clicked();
+
 private:
     Ui::reserv *ui;
     Database db;

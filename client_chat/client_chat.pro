@@ -1,4 +1,4 @@
-QT       += core gui sql network
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,56 +16,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    car.cpp \
-    car_add.cpp \
-    chat.cpp \
-    client_select.cpp \
     main.cpp \
-    mainwindow.cpp \
-    reserv.cpp \
-    reserv_add.cpp \
-    thread.cpp \
-    tour.cpp \
-    tour_add.cpp \
-    user.cpp \
-    user_add.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    car.h \
-    car_add.h \
-    chat.h \
-    client_select.h \
-    database.h \
-    mainwindow.h \
-    reserv.h \
-    reserv_add.h \
-    tcp.h \
-    thread.h \
-    tour.h \
-    tour_add.h \
-    user.h \
-    user_add.h
+    mainwindow.h
 
 FORMS += \
-    car.ui \
-    car_add.ui \
-    chat.ui \
-    client_select.ui \
-    mainwindow.ui \
-    reserv.ui \
-    reserv_add.ui \
-    tour.ui \
-    tour_add.ui \
-    user.ui \
-    user_add.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    img.qrc
-
-DISTFILES += \
-    img/payments.png

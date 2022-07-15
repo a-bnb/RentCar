@@ -57,11 +57,13 @@ void reserv::on_remove_btn_clicked()
         return;
 
     QString id = ui->table->takeItem(row, 1)->text();
+    int price = ui->table->takeItem(row, 5)->text().toInt()/10;
+    QMessageBox::information(this, "위약금", "취소 위약금 "+ QString::number(price) +"원입니다.");
+
     sprintf(query, "DELETE FROM reserv WHERE reserv_id ='%s'", id.toLocal8Bit().data());
     sql_query.exec(QString::fromLocal8Bit(query));
     if(sql_query.lastError().type() == QSqlError::NoError)
     {
-        QMessageBox::information(this, "message", "Delete Complete!");
         ui->table->removeRow(row);
     }
     else
@@ -95,4 +97,29 @@ void reserv::on_exit_btn_clicked()
 void reserv::on_table_itemClicked()
 {
     check=true;
+}
+
+void reserv::on_sell_btn_clicked()
+{
+    int row;
+    if(check==true)
+        row = ui->table->currentRow();
+    else
+        return;
+
+    QString id = ui->table->takeItem(row, 1)->text();
+    int price = ui->table->takeItem(row, 5)->text().toInt();
+    QMessageBox::information(this, "결제", "결제액 "+ QString::number(price) +"원입니다.");
+
+    sprintf(query, "DELETE FROM reserv WHERE reserv_id ='%s'", id.toLocal8Bit().data());
+    sql_query.exec(QString::fromLocal8Bit(query));
+    if(sql_query.lastError().type() == QSqlError::NoError)
+    {
+        ui->table->removeRow(row);
+    }
+    else
+    {
+        QMessageBox::information(this, "error", "삭제 실패");
+    }
+    check = false;
 }

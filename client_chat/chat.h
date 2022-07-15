@@ -13,7 +13,6 @@
 #include "tcp.h"
 #include "database.h"
 #include "thread.h"
-#include <QListWidget>
 
 namespace Ui {
 class chat;
@@ -43,9 +42,9 @@ private:
     Database db;
     tcp sock;
     Thread * thd;
-    QString name;
+    bool check;
     QSqlQuery sql_query;
-    QString query;
+    char query[1024];
     char msg[1024];
 
 };

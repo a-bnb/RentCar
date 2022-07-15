@@ -59,7 +59,7 @@ void car::on_remove_btn_clicked()
         return;
 
     QString model = ui->table->takeItem(row, 0)->text();
-    sprintf(query, "DELETE FROM Car WHERE Car_name ='%s'", model.toLocal8Bit().data());
+    sprintf(query, "DELETE FROM Car WHERE Car_model ='%s'", model.toLocal8Bit().data());
     sql_query.exec(QString::fromLocal8Bit(query));
     if(sql_query.lastError().type() == QSqlError::NoError)
     {
@@ -69,6 +69,7 @@ void car::on_remove_btn_clicked()
     else
     {
         QMessageBox::information(this, "error", "삭제 실패");
+        std::cout<<sql_query.lastError().text().toStdString()<<std::endl;
     }
     check = false;
 }

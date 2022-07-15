@@ -27,7 +27,7 @@ class Recv : public Event
         void send_msg();
         void chat_end();
 
-    private:
+    protected:
         char query[SIZE_CONST::BUF_SIZE];
         vector<udata> wait_list;
         udata* user_data;

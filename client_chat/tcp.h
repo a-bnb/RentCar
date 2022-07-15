@@ -14,9 +14,8 @@ class tcp
 {
 public:
     int sock = 0;
-//    std::string ip = "10.10.20.233";
-    std::string ip = "127.0.0.1";
-    std::string port = "9011";
+    std::string ip = "10.10.20.233";
+    std::string port = "9010";
     struct sockaddr_in serv_addr;
     void connect_server()
     {
@@ -33,11 +32,10 @@ public:
             msgBox.exec();
             exit(1);
         }
-        std::cout<<"server Connected!"<<std::endl;
     }
-    void update(QString message)
+    void update()
     {
-        std::string msg = message.toStdString();
+        std::string msg = "update/center/center";
         write(sock, msg.c_str(), sizeof(msg));
     }
 };

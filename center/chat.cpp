@@ -8,37 +8,53 @@ chat::chat(tcp sock, Database db, QWidget *parent) :
     sock(sock)
 {
     ui->setupUi(this);
+    name = "center";
     thd = new Thread(sock, this);
-    connect(thd, SIGNAL(recv()), this, SLOT(push_msg(QString)));
+    connect(thd, SIGNAL(push_list(QString)), this, SLOT(push_msg(QString)));
     thd->start();
 }
 
 chat::~chat()
 {
     delete ui;
+    delete thd;
 }
 
 void chat::closeEvent(QCloseEvent *)
 {
-    write(sock.sock, "chat_end", sizeof("chat_end"));
-    delete thd;
+    int row=0;
+    QListWidgetItem *message;
+    query = "INSERT INTO chat_log VALUES ("+name+",시작) ";
+    while(true)
+    {
+        message = ui->chat_list->takeItem(row++);
+        if(message==nullptr)
+            break;
+        query += ", ("+name+","+message->text()+")";
+    }
+    sql_query.exec(query);
+    if(sql_query.lastError().type()!=QSqlError::NoError)
+        std::cout<<"error"<<std::endl;
+    thd->terminate();
 }
 
 void chat::push_msg(QString msg)
 {
-    if(msg == "chat_end")
+    if(msg == "chat_end" || msg == "chat_end2")
     {
         this->close();
         return;
     }
-    ui->chat_browser->append(msg);
+    ui->chat_list->addItem(msg);
 }
 
 void chat::on_chat_btn_clicked()
 {
-    std::string chat = ui->chat_edit->text().toStdString();
-    std::string send_msg = "send_msg/" + chat;
+    if(ui->chat_edit->text() =="")
+        return;
+    std::string send_msg = "send_msg/" + ui->chat_edit->text().toStdString();
     write(sock.sock, send_msg.c_str(), sizeof(send_msg));
+    ui->chat_list->addItem("["+name+"] "+ui->chat_edit->text());
     ui->chat_edit->clear();
 }
 

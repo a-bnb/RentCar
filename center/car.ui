@@ -329,6 +329,11 @@ color: rgb(255, 255, 255);</string>
      <string>보관 개수</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>배기량</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources>

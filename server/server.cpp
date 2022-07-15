@@ -22,7 +22,7 @@ void Server::Main_Func()
             {
                 user_data = (udata*)events[i].data.ptr;
                 memset(buf, 0x00, SIZE_CONST::BUF_SIZE);
-                read_cnt = read(user_data->fd, buf, SIZE_CONST::BUF_SIZE);
+                read_cnt = read(user_data->fd, buf, sizeof(buf));
                 if(read_cnt<=0)
                 {
                     Disconnect();
@@ -58,8 +58,7 @@ void Server::Accept()
 
 void Server::Disconnect()
 {
-    if(user_data->chat_fd > 0)
-        write(user_data->chat_fd, "chat_end", sizeof("chat_end"));
+    cout<<"\n"<<user_data->fd<<" disconnected!"<<endl;
     epoll_ctl(epoll_fd, EPOLL_CTL_DEL, user_data->fd, events);
     close(user_data->fd);
     user_fds[user_data->fd] = -1;

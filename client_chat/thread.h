@@ -11,7 +11,7 @@ class Thread :public QThread
 public:
     tcp sock;
     explicit Thread(tcp sock, QObject* parent = 0);
-    void run();
+    void recv();
 
 
 signals:

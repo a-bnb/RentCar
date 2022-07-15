@@ -35,6 +35,7 @@ void car_add::edit_set()
         sql_query.next();
         ui->price_text->setText(sql_query.value(1).toString());
         ui->stock_text->setText(sql_query.value(3).toString());
+        ui->cc_text->setText(sql_query.value(4).toString());
         ui->type_box->setCurrentIndex(ui->type_box->findText(sql_query.value(2).toString()));
     }
     else
@@ -51,7 +52,7 @@ void car_add::on_check_btn_clicked()
         QMessageBox::information(this, "error", "공백");
         return;
     }
-    sprintf(query, "SELECT * FROM Car WHERE Car_name='%s'", check_text.toLocal8Bit().data());
+    sprintf(query, "SELECT * FROM Car WHERE Car_model='%s'", check_text.toLocal8Bit().data());
     sql_query.exec(QString::fromLocal8Bit(query));
     if(sql_query.size() == 0)
     {
@@ -71,6 +72,7 @@ void car_add::on_update_btn_clicked()
     tour_list.append(ui->price_text->text());
     tour_list.append(ui->type_box->currentText());
     tour_list.append(ui->stock_text->text());
+    tour_list.append(ui->cc_text->text());
 
 
     if(model == tour_list.value(0))
@@ -92,21 +94,23 @@ void car_add::on_update_btn_clicked()
     {
         if(model =="")
         {
-            sprintf(query, "INSERT INTO Car VALUES('%s',%s,'%s','%s')",
+            sprintf(query, "INSERT INTO Car VALUES('%s',%s,'%s',%s,'%s')",
                     tour_list.value(0).toLocal8Bit().data(),tour_list.value(1).toLocal8Bit().data(),
-                    tour_list.value(2).toLocal8Bit().data(), tour_list.value(3).toLocal8Bit().data());
+                    tour_list.value(2).toLocal8Bit().data(), tour_list.value(3).toLocal8Bit().data(),
+                    tour_list.value(4).toLocal8Bit().data());
         }
         else
         {
-            sprintf(query, "UPDATE Car SET Car_model='%s', Car_price=%s, oil_type='%s', Car_stock=%s WHERE Car_name='%s'",
+            sprintf(query, "UPDATE Car SET Car_model='%s', Car_price=%s, oil_type='%s', Car_stock=%s, Car_data='%s' WHERE Car_model='%s'",
                     tour_list.value(0).toLocal8Bit().data(),tour_list.value(1).toLocal8Bit().data(),
                     tour_list.value(2).toLocal8Bit().data(), tour_list.value(3).toLocal8Bit().data(),
-                    model.toLocal8Bit().data());
+                    tour_list.value(4).toLocal8Bit().data(), model.toLocal8Bit().data());
         }
         sql_query.exec(QString::fromLocal8Bit(query));
         if(sql_query.lastError().type() != QSqlError::NoError)
         {
             QMessageBox::information(this, "error", "데이터베이스 접근 오류");
+
 
         }
         else
