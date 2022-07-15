@@ -6,12 +6,15 @@ Thread::Thread(tcp sock, QObject* parent):
 {
 }
 
-void Thread::recv()
+void Thread::run()
 {
     char recv_msg[1024];
-    while(read(sock.sock, recv_msg, sizeof (recv_msg)) != -1)
+    while(true)
     {
-        emit Thread::push_list((QString)recv_msg);
+        if(read(sock.sock, recv_msg, sizeof(recv_msg)) < 0)
+            break;
+        std::cout<<"msg: "<<recv_msg<<std::endl;
+        emit Thread::push_list(QString::fromLocal8Bit(recv_msg));
         memset(recv_msg, 0, sizeof(recv_msg));
     }
 
