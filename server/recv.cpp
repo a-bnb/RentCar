@@ -13,9 +13,9 @@ void Recv::Recv_main(udata* userdata, string msg)
     {
         update();
     }
-    else if(clnt_msg.find("showclnt") == 0)
+    else if(clnt_msg.find("show_clnt") == 0)
     {
-        client_wait();
+        show_wait();
     }
     else if(clnt_msg.find("con_clnt") == 0)
     {
@@ -40,7 +40,6 @@ void Recv::update()
 {
     cout<<clnt_msg<<endl;
     vector<string> check_msg = Recv::split(clnt_msg, '/');
-    user_data->name = check_msg[2];
     if(check_msg[1] == "center")
         user_data->type=1;
     else
@@ -48,11 +47,12 @@ void Recv::update()
         user_data->type=0;
         wait_list.push_back(*user_data);
     }
-        
+    user_data->name = check_msg[2];
+   
     
 }
 
-void Recv::client_wait()
+void Recv::show_wait()
 {
     for(udata client : wait_list)
     {

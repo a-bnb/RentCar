@@ -19,10 +19,12 @@ SOURCES += \
     car.cpp \
     car_add.cpp \
     chat.cpp \
+    client_select.cpp \
     main.cpp \
     mainwindow.cpp \
     reserv.cpp \
     reserv_add.cpp \
+    thread.cpp \
     tour.cpp \
     tour_add.cpp \
     user.cpp \
@@ -32,10 +34,13 @@ HEADERS += \
     car.h \
     car_add.h \
     chat.h \
+    client_select.h \
     database.h \
     mainwindow.h \
     reserv.h \
     reserv_add.h \
+    tcp.h \
+    thread.h \
     tour.h \
     tour_add.h \
     user.h \
@@ -45,6 +50,7 @@ FORMS += \
     car.ui \
     car_add.ui \
     chat.ui \
+    client_select.ui \
     mainwindow.ui \
     reserv.ui \
     reserv_add.ui \

@@ -21,7 +21,7 @@ class Recv : public Event
         void Recv_main(udata *userdata, string clnt_msg);
         vector<string> split(string str, char Delimiter);
         void update();
-        void client_wait();
+        void show_wait();
         void connect_client();
         void connect_server();
         void send_msg();

@@ -59,7 +59,7 @@ void Server::Accept()
 void Server::Disconnect()
 {
     if(user_data->chat_fd > 0)
-        write(user_data->chat_fd, "chat_over", sizeof("chat_over"));
+        write(user_data->chat_fd, "chat_end", sizeof("chat_end"));
     epoll_ctl(epoll_fd, EPOLL_CTL_DEL, user_data->fd, events);
     close(user_data->fd);
     user_fds[user_data->fd] = -1;
